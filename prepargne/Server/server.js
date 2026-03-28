@@ -1,5 +1,3 @@
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +10,12 @@ app.use(express.urlencoded({extended: true}))
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
+const db = require("./models")
+db.sequelize.sync({alter: true}).then(() => {
+    console.log("heyyy macarena");
+})
+console.log(typeof db.sequelize.sync);
 
 app.listen(PORT, () => {
   console.log(`Prepargne server is running on http://localhost:${PORT}`);
