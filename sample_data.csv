@@ -1,0 +1,38 @@
+﻿dateOp;dateVal;label;category;categoryParent;supplierFound;amount;comment;accountNum;accountLabel;accountbalance
+2026-02-26;2026-02-26;"Bolt | CARTE 25/02/26 BOLT.EU/O/2602250 CB*2789";Taxis;"Voyages & Transports";"bolt eu";-22,30;;00040587007;BoursoBank;455.25
+2026-02-26;2026-02-26;"Vir Sepa Mjc La Vallee | VIR SEPA MJC LA VALLEE";"Salaire fixe";"Revenus du travail";"virement mjc la vallee";72,76;;00040587007;BoursoBank;455.25
+2026-02-25;2026-02-25;"La Ruche | CARTE 24/02/26 LA RUCHE CB*2789";"Restaurants, bars, discothèques…";"Loisirs et sorties";"la ruche";-13,35;;00040587007;BoursoBank;404.79
+2026-02-25;2026-02-25;"Le Café Noir | CARTE 25/02/26 MGT CB*2789";"Livres, CD/DVD, bijoux, jouets…";"Vie quotidienne";mgt;-12,30;;00040587007;BoursoBank;404.79
+2026-02-25;2026-02-25;"Monoprix | CARTE 24/02/26 MONOPRIX 4 CB*2789";Alimentation;"Vie quotidienne";monoprix;-4,10;;00040587007;BoursoBank;404.79
+2026-02-25;2026-02-25;"Vir Sepa Cpam 94 | VIR SEPA CPAM 94";"Remboursements frais de santé";Santé;"virement cpam";12,80;;00040587007;BoursoBank;404.79
+2026-02-25;2026-02-25;"Vir Virement De Lucas Ferreira | VIR Virement de Lucas FERREIRA";"Virements reçus de comptes à comptes";"Mouvements internes créditeurs";"virement de lucas ferreira";11,15;;00040587007;BoursoBank;404.79
+2026-02-24;2026-02-24;"Vir Virement De Lucas Ferreira | VIR Virement de Lucas FERREIRA";"Virements reçus de comptes à comptes";"Mouvements internes créditeurs";"virement de lucas ferreira";15,00;;00040587007;BoursoBank;410.59
+2026-02-24;2026-02-24;"Boulangerie L'epee D'or | CARTE 22/02/26 SC-L'EPEE D'OR CB*2789";"Restaurants, bars, discothèques…";"Loisirs et sorties";"sc l epee d or";-1,25;;00040587007;BoursoBank;410.59
+2026-02-24;2026-02-24;"Vir Inst Melissande Fabre | VIR INST MELISSANDE FABRE";"Virements reçus";"Virements reçus";"melissande fabre";5,00;;00040587007;BoursoBank;410.59
+2026-02-23;2026-02-23;"SNCF | CARTE 22/02/26 SNCF-VOYAGEURS CB*2789";"Transports longue distance (avions, trains…)";"Voyages & Transports";sncf;-56,00;;00040587007;BoursoBank;391.84
+2026-02-23;2026-02-23;"Selarl E.r.a. | CARTE 21/02/26 SELARL TRABOULSI2 CB*2789";"Non catégorisé";"Non catégorisé";"SELARL TRABOULSI2113625";-23,00;;00040587007;BoursoBank;391.84
+2026-02-23;2026-02-23;"Shotgun | CARTE 22/02/26 SHOTGUN* SILENCIO CB*2789";"Entretien - Réparation";"Auto & Moto";"shotgun silencio";-30,76;;00040587007;BoursoBank;391.84
+2026-02-23;2026-02-23;"Zettle_*Marche Am | CARTE 21/02/26 Zettle_*Marche am CB*2789";Alimentation;"Vie quotidienne";"zettle marche ambulante";-8,00;;00040587007;BoursoBank;391.84
+2026-02-23;2026-02-23;"Phenix | CARTE 21/02/26 LS The Great Cana CB*2789";"Non catégorisé";"Non catégorisé";"LS The Great Canadian";-20,50;;00040587007;BoursoBank;391.84
+2026-02-23;2026-02-23;"Deliveroo | CARTE 20/02/26 Deliveroo CB*2789";"Restaurants, bars, discothèques…";"Loisirs et sorties";deliveroo.fr;-34,29;;00040587007;BoursoBank;391.84
+2026-02-23;2026-02-23;"Esso Express | CARTE 20/02/26 CERTAS ESSOF266 4 CB*2789";Carburant;"Auto & Moto";"CERTAS ESSOF266 4245651";-93,04;;00040587007;BoursoBank;391.84
+2026-02-23;2026-02-21;"Virement de Severine Charon | VIR Virement de Severine CHARON";"Virements reçus de comptes à comptes";"Mouvements internes créditeurs";"virement de severine charon";100,00;;00040587007;BoursoBank;557.43
+2026-02-20;2026-02-20;"monCVparfait | CARTE 18/02/26 MonCVParfait.fr CB*2789";"Abonnements & téléphonie";"Abonnements & téléphonie";"moncvparfait fr";-3,00;;00040587007;BoursoBank;557.43
+2026-02-19;2026-02-19;"L Etoile Du | CARTE 17/02/26 SC-L ETOILE DU CB*2789";"Restaurants, bars, discothèques…";"Loisirs et sorties";"sc l etoile du";-3,25;;00040587007;BoursoBank;560.43
+2026-02-18;2026-02-18;"Afc Chicken | CARTE 17/02/26 AFC CHICKEN CB*2789";"Non catégorisé";"Non catégorisé";"AFC CHICKEN";-8,01;;00040587007;BoursoBank;563.68
+2026-02-16;2026-02-16;"Le Charivari | CARTE 14/02/26 LE CHARIVARI CB*2789";"Restaurants, bars, discothèques…";"Loisirs et sorties";"le charivari";-62,50;;00040587007;BoursoBank;571.69
+2026-02-16;2026-02-16;"Loaded Com | CARTE 15/02/26 PAYPAL *LOADED CO CB*2789";"Vie quotidienne";"Vie quotidienne";paypal;-27,73;;00040587007;BoursoBank;571.69
+2026-02-16;2026-02-16;"Loaded Com | CARTE 15/02/26 PAYPAL *LOADED CO CB*2789";"Vie quotidienne";"Vie quotidienne";paypal;-25,43;;00040587007;BoursoBank;571.69
+2026-02-16;2026-02-15;"Virement de M ANDRE FERREIRA | VIR INST M ANDRE FERREIRA";"Virements reçus";"Virements reçus";"m andre ferreira";35,00;;00040587007;BoursoBank;637.35
+2026-02-16;2026-02-15;"Vir Inst Audrey Pezet | VIR INST AUDREY PEZET";"Virements émis";"Virements émis";"audrey pezet";-15,00;;00040587007;BoursoBank;637.35
+2026-02-16;2026-02-15;"Virement de MELISSANDE FABRE | VIR INST MELISSANDE FABRE";"Virements reçus";"Virements reçus";"melissande fabre";30,00;;00040587007;BoursoBank;637.35
+2026-02-11;2026-02-11;"Virement de Severine Charon | VIR Virement de Severine CHARON";"Virements reçus de comptes à comptes";"Mouvements internes créditeurs";"virement de severine charon";35,00;;00040587007;BoursoBank;637.35
+2026-02-11;2026-02-11;"Cotisation Offre METAL 02/2026 | *FRAIS OFFRE METAL 02/2026";"Frais bancaires et de gestion (dont agios)";"Services financiers & professionnels";"Boursorama Banque";-9,90;;00040587007;BoursoBank;637.35
+2026-02-10;2026-02-10;"Postmarketos | CARTE 09/02/26 REAL DISTRIBUTIO CB*2789";"Bricolage et jardinage";"Vie quotidienne";"real distributio";-1,70;;00040587007;BoursoBank;612.25
+2026-02-09;2026-02-09;"A.lizabaul.coiff | CARTE 07/02/26 A.LIZABAUL.COIFF CB*2789";"Bien-être et soins (coiffeur, parfums…)";"Vie quotidienne";"a lizabaul coiff";-32,00;;00040587007;BoursoBank;613.95
+2026-02-09;2026-02-09;"Bexley | CARTE 07/02/26 BEXLEY CB*2789";"Vêtements et accessoires";"Vie quotidienne";bexley;-502,00;;00040587007;BoursoBank;613.95
+2026-02-09;2026-02-09;"Snp*dk Food | CARTE 06/02/26 SnP*DK FOOD CB*2789";"Non catégorisé";"Non catégorisé";"SnP*DK FOOD";-5,50;;00040587007;BoursoBank;613.95
+2026-02-09;2026-02-09;"Avantages Offre METAL : 01/2026 | AVANTAGES OFFRE METAL : 01/2026";"Remboursement de frais / offres BoursoBank";"Services financiers & professionnels";"avantages offre metal";0,83;;00040587007;BoursoBank;613.95
+2026-02-09;2026-02-07;"Virement de Melissande Fabre | VIR Virement de Melissande FABRE";"Virements reçus";"Virements reçus";"virement de melissande fabre";250,00;;00040587007;BoursoBank;902.62
+2026-02-05;2026-02-05;"Vir Inst Melissa Fabre | VIR INST MELISSA FABRE";"Virements émis";"Virements émis";"melissa fabre";-40,00;;00040587007;BoursoBank;902.62
+2026-02-05;2026-02-05;"Vir Argent de Poche | VIR Argent de poche";"Argent de poche";"Education & Famille";"virement argent de poche";150,00;;00040587007;BoursoBank;902.62
