@@ -7,3 +7,9 @@ INSERT INTO spendings VALUES (10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6
 SELECT * FROM spendings;
 SELECT * FROM tokenizeds;
 SELECT * FROM users;
+
+-- Nukes if messed up foreign key constraint stuff
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS tokenizeds;
+DROP TABLE IF EXISTS spendings;
+SET FOREIGN_KEY_CHECKS = 1;

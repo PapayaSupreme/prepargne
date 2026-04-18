@@ -6,7 +6,7 @@ const Spending = db.spending
 const Op = db.Sequelize.Op
 
 var jwt = require("jsonwebtoken")
-var bcrypt = require("bcryptjs")
+var crypto = require("crypto")
 
 exports.addInfo = (req, res) => { //Expects JSON with revenue, token to put in table and score
     if (req.body === undefined) {
@@ -16,21 +16,24 @@ exports.addInfo = (req, res) => { //Expects JSON with revenue, token to put in t
         return res.status(400).send({ message : "Missing parameters." })
     }
     jwt.verify(req.body.token, config.secret, (err, decoded) => { 
-            if (err) { 
-              return res.status(401).send({ 
-                message: "Unauthorized." 
-              }); 
-            }
-            Tokenized.create({
-                token: req.body.token,
-                revenue: req.body.revenue,
-                investorScore: req.body.score
-            }).then(() => {
-                res.status(200).send({ message: "Information about user " + decoded.id + " registered." })
-            }).catch(err => {
-                res.status(500).send({ message: err.message })
-            })
+        if (err) { 
+            return res.status(401).send({ 
+            message: "Unauthorized." 
+            }); 
+        }
+
+        var hashed = crypto.createHmac('sha256', config.secret).update(decoded.id + decoded.username, 'utf8').digest('hex') //fabrics hash with token info
+
+        Tokenized.create({
+            hash: hashed,
+            revenue: req.body.revenue,
+            investorScore: req.body.score
+        }).then(() => {
+            res.status(200).send({ message: "Information about user " + decoded.id + " registered." })
+        }).catch(err => {
+            res.status(500).send({ message: err.message })
         })
+    })
 }
 
 exports.addSpending = (req, res) => { //Will handle JSON array with info, loop to put each record
@@ -82,8 +85,11 @@ exports.addSpending = (req, res) => { //Will handle JSON array with info, loop t
             }
 
             for (let i = 0; i < req.body.spendings.length; i++) { //Sends as many INSERT INTO queries as necessary to add to the records the spendings
+
+                var hashed = crypto.createHmac('sha256', config.secret).update(decoded.id + decoded.username, 'utf8').digest('hex')
+
                 Spending.create({
-                    token: req.body.token,
+                    hash: hashed,
                     amount_spent: req.body.spendings[i]["amount_spent"],
                     category: req.body.spendings[i]["category"]
                 }).then(() => {
@@ -99,7 +105,33 @@ exports.addSpending = (req, res) => { //Will handle JSON array with info, loop t
 }
 
 exports.patchRevenue = (req, res) => { //Update following above
-    res.status(200).send({ message: "WIP." })
+    if (req.body === undefined) {
+        return res.status(400).send({ message : "Empty request body." })
+    }
+    if (req.body.token === undefined | req.body.score === undefined | req.body.revenue === undefined) {
+        return res.status(400).send({ message : "Missing parameters." })
+    }
+    jwt.verify(req.body.token, config.secret, (err, decoded) => { 
+            if (err) { 
+              return res.status(401).send({ 
+                message: "Unauthorized." 
+              }); 
+            }
+
+            var hashed = crypto.createHmac('sha256', config.secret).update(decoded.id + decoded.username, 'utf8').digest('hex')
+
+            Tokenized.update({
+                revenue: req.body.revenue,
+                investorScore: req.body.score
+            }, { where : {
+                hash: hashed
+            }}).then(() => {
+                res.status(200).send({ message: "Information about user " + decoded.id + " updated." })
+            }).catch(err => {
+                res.status(500).send({ message: err.message })
+            })
+        })
+    //res.status(200).send({ message: "WIP." })
 }
 
 exports.updateSpending = (req, res) => {

@@ -24,14 +24,14 @@ db.tokenized = require("./tokenizedModel.js")(sequelize, Sequelize)
 db.spending = require("./spendingModel.js")(sequelize, Sequelize)
 
 db.spending.belongsTo(db.tokenized, {
-    foreignKey: "token",
-    targetKey: "token",
+    foreignKey: "hash",
+    targetKey: "hash",
     onDelete: "CASCADE"
 });
 
 db.tokenized.hasMany(db.spending, {
-    foreignKey: "token",
-    sourceKey: "token"
+    foreignKey: "hash",
+    sourceKey: "hash"
 });
 
 module.exports = db
