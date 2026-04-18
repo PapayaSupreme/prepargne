@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true,
             allowNull: false
         },
-        token: { //Generate after account creation using revenue + password hash through hashing algorithm ?
+        hash: { //hash generated with jwt data
             type: Sequelize.STRING,
             allowNull: false,
             unique: true

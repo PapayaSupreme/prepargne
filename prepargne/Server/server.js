@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3000;
 const cors = require("cors")
 
 const route1 = require("./routes/routesUser.js")
+const route2 = require("./routes/routesData.js")
 
 app.use(cors({methods: 'GET,PUT,PATCH,POST,DELETE,LOCK,UNLOCK,REPORT'}))
 app.use(express.json())
@@ -21,6 +22,7 @@ db.sequelize.sync({alter: true}).then(() => {
 })
 
 route1(app)
+route2(app)
 
 app.listen(PORT, () => {
   console.log(`Prepargne server is running on http://localhost:${PORT}`);
