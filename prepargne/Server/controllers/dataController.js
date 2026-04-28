@@ -1,5 +1,6 @@
 const db = require("../models")
 const { parse } = require("csv-parse/sync")
+const spendingStatsModel = require("../models/spendingStatsModel")
 const BankTransaction = db.bankTransaction
 
 const parseDecimal = (value) => {
@@ -40,7 +41,24 @@ exports.updateSpending = (req, res) => {
 }
 
 exports.retrieveData = (req, res) => { //The get that will get all the precious data
-    res.status(200).send({ message: "WIP." })
+    const token = req.query.token || null
+
+    spendingStatsModel.buildSpendingStats({ token })
+        .then(async (stats) => {
+            const where = token ? { token } : {}
+            const rows = await BankTransaction.findAll({
+                where,
+                order: [["dateOp", "ASC"], ["id", "ASC"]]
+            })
+
+            return res.status(200).send({
+                ...stats,
+                transactions: rows.map(spendingStatsModel.normalizeTransaction)
+            })
+        })
+        .catch((err) => {
+            return res.status(500).send({ message: "Failed to retrieve data: " + err.message })
+        })
 }
 
 exports.uploadCsv = async (req, res) => {

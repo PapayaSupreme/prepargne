@@ -108,6 +108,8 @@
         </ul>
         <p v-else class="empty-state">The largest expenses will be listed here after upload.</p>
       </article>
+
+      <ChatbotPanel :key="chatbotKey" />
     </section>
 
   </main>
@@ -115,6 +117,7 @@
 
 <script setup>
 import { onMounted, ref } from "vue"
+import ChatbotPanel from "./components/ChatbotPanel.vue"
 
 const selectedFile = ref(null)
 const fileInput = ref(null)
@@ -123,6 +126,7 @@ const successMessage = ref("")
 const errorMessage = ref("")
 const stats = ref(null)
 const statsError = ref("")
+const chatbotKey = ref(0)
 
 const PIE_COLORS = ["#2563eb", "#14b8a6", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#84cc16", "#f97316"]
 
@@ -175,7 +179,9 @@ const loadStats = async () => {
     const payload = await response.json().catch(() => ({}))
 
     if (!response.ok) {
-      throw new Error(payload.message || "Failed to load spending statistics.")
+      stats.value = null
+      statsError.value = payload.message || "Failed to load spending statistics."
+      return null
     }
 
     stats.value = payload
@@ -215,7 +221,8 @@ const submitCsvUpload = async () => {
 
     const payload = await response.json().catch(() => ({}))
     if (!response.ok) {
-      throw new Error(payload.message || "CSV upload failed.")
+      errorMessage.value = payload.message || "CSV upload failed."
+      return
     }
 
     const imported = payload.importedRows ?? 0
@@ -225,6 +232,8 @@ const submitCsvUpload = async () => {
     if (fileInput.value) {
       fileInput.value.value = ""
     }
+
+    chatbotKey.value += 1
 
     await loadStats()
   } catch (error) {
