@@ -7,8 +7,7 @@ Customers are shy to invest due to financial illiteracy, we need to familiarize 
 - Arthur Donnat
 - Arthur Delannoy
 
-# Todo :
--
+# Setup :
 
 # Functionalities done :
 -
