@@ -42,7 +42,7 @@ module.exports = (sequelize, Sequelize) => {
         accountBalance: {
             type: Sequelize.DECIMAL(12, 2)
         },
-        token: {
+        hash: {
             type: Sequelize.STRING,
             allowNull: true
         }

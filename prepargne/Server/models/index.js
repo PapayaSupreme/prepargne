@@ -36,14 +36,14 @@ db.tokenized.hasMany(db.spending, {
 });
 
 db.bankTransaction.belongsTo(db.tokenized, {
-    foreignKey: "token",
-    targetKey: "token",
+    foreignKey: "hash",
+    targetKey: "hash",
     onDelete: "CASCADE"
 });
 
 db.tokenized.hasMany(db.bankTransaction, {
-    foreignKey: "token",
-    sourceKey: "token"
+    foreignKey: "hash",
+    sourceKey: "hash"
 });
 
 module.exports = db
