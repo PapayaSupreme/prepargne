@@ -14,6 +14,7 @@ module.exports = function(app) {
     app.unlock("/invest-info", data.updateSpending) //Redo spending info
     app.get("/invest-info", data.retrieveData) //Retrieve Data from all tables in JSON to feed the chatbot
     app.get("/invest-info/stats", stats.getSpendingStats)
+    app.get("/invest-info/transactions", data.retrieveTransactions) //Separated into a new endpoint for the transaction reading, verify if accesses are done correctly
     app.post("/invest-info/upload-csv", upload.single("file"), data.uploadCsv)
 
 }
