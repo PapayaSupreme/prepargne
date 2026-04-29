@@ -1,4 +1,9 @@
 const db = require("../models")
+const config = require("../config/auth.config.js")
+const User = db.user
+const Tokenized = db.tokenized
+const Spending = db.spending
+const Op = db.Sequelize.Op
 const { parse } = require("csv-parse/sync")
 const spendingStatsModel = require("../models/spendingStatsModel")
 const BankTransaction = db.bankTransaction
@@ -264,7 +269,7 @@ exports.updateSpending = (req, res) => {
     })
 }
 
-exports.retrieveData = (req, res) => { //The get that will get all the precious data
+exports.retrieveTransactions = (req, res) => { //Separated by the force of github branch conflict management
     const token = req.query.token || null
 
     spendingStatsModel.buildSpendingStats({ token })
@@ -283,6 +288,52 @@ exports.retrieveData = (req, res) => { //The get that will get all the precious 
         .catch((err) => {
             return res.status(500).send({ message: "Failed to retrieve data: " + err.message })
         })
+}
+
+exports.retrieveData = (req, res) => { //The get that will get all the precious data
+    if (req.body === undefined) {
+        return res.status(400).send({ message : "Empty request body." })
+    }
+    if (req.body.token === undefined) {
+        return res.status(400).send({ message : "Missing parameters." })
+    }
+    jwt.verify(req.body.token, config.secret, (err, decoded) => { 
+        if (err) { 
+            return res.status(401).send({ 
+                message: "Unauthorized." 
+            }); 
+        }
+
+        var hashed = crypto.createHmac('sha256', config.secret).update(decoded.id + decoded.username, 'utf8').digest('hex')
+        var tokendata = "cara istouille"
+        var spendingdata = []
+
+        Tokenized.findOne({
+            where: { hash: hashed }
+        }).then(record => {
+            console.log(record.dataValues)
+            tokendata = record.dataValues
+
+            Spending.findAll({
+                where: { hash: hashed }
+            }).then(record => {
+                console.log(record)
+                if (record) {
+                    record.forEach(element => {
+                        spendingdata.push(element.dataValues)
+                    });
+                }
+
+                res.status(200).send({ message: "Fetching completed, data sent in body", data: { UserKeyInfo: tokendata, Spending: spendingdata } })
+            }).catch(err => {
+                return res.status(500).send({ message: "Exception has occurred during Spending fetching : " + err.message })
+            })
+
+        }).catch(err => {
+            return res.status(500).send({ message: "Exception has occurred during Tokenized fetching : " + err.message })
+        })
+
+    })
 }
 
 exports.uploadCsv = async (req, res) => {
