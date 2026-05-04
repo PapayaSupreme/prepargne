@@ -4,6 +4,10 @@
   --text: #1f2937;
   --muted: #6b7280;
   --border: #e5e7eb;
+  --primary-green: #10b981;
+  --primary-blue: #3b82f6;
+  --primary-green-light: #ecfdf5;
+  --primary-blue-light: #eff6ff;
 }
 
 * {
@@ -29,11 +33,18 @@ body {
 
 .topbar {
   margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--primary-green), var(--primary-blue)) 1;
 }
 
 .topbar h1 {
   margin: 0;
   font-size: 2rem;
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .topbar p {
@@ -56,11 +67,18 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
 }
 
 .card h2 {
   margin: 0 0 0.5rem;
   font-size: 1.05rem;
+  color: var(--text);
 }
 
 .card p {
@@ -92,15 +110,29 @@ body {
   padding: 0.55rem 0.65rem;
   background: #fff;
   color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .upload-form button {
-  border: 1px solid var(--text);
-  background: var(--text);
+  border: 1px solid var(--primary-blue);
+  background: var(--primary-blue);
   color: #fff;
   border-radius: 8px;
   padding: 0.55rem 0.75rem;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-form button:hover:not(:disabled) {
+  background: #2563eb;
+  border-color: #2563eb;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .upload-form button:disabled {
@@ -137,8 +169,14 @@ body {
 .stat {
   padding: 0.8rem;
   border-radius: 10px;
-  background: #f9fafb;
-  border: 1px solid var(--border);
+  background: white;
+  border: 2px solid var(--primary-blue);
+  transition: all 0.2s ease;
+}
+
+.stat:hover {
+  background: var(--primary-blue-light);
+  border-color: var(--primary-green);
 }
 
 .stat span {
@@ -164,8 +202,9 @@ body {
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  border: 1px solid var(--border);
-  background: #e5e7eb;
+  border: 3px solid var(--primary-blue);
+  background: white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
 }
 
 .pie-legend {
@@ -216,7 +255,13 @@ body {
   padding: 0.75rem;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: #f9fafb;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.list-item:hover {
+  border-color: var(--primary-green);
+  background: var(--primary-green-light);
 }
 
 .list-item p {
@@ -232,8 +277,14 @@ body {
   margin-top: 1rem;
   padding: 0.9rem;
   border-radius: 10px;
-  background: #f9fafb;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-green-light));
+  border: 2px solid var(--primary-green);
+  transition: all 0.2s ease;
+}
+
+.biggest-spending:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
 }
 
 .biggest-spending strong {
