@@ -68,7 +68,7 @@ const login = async () => {
 
     localStorage.setItem("token", res.data.token)
 
-    router.push("/dashboard")
+    router.push("/Homepage")
   } catch (err) {
     error.value = err.response?.data?.message || "Login failed"
   } finally {

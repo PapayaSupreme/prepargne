@@ -5,6 +5,7 @@
       <p class="subtitle">Start optimizing your savings</p>
 
       <form @submit.prevent="register">
+
         
         <div class="input-group">
           <label>Username</label>

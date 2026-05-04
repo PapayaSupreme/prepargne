@@ -13,6 +13,42 @@ const moneyFormatter = new Intl.NumberFormat("fr-FR", {
 
 const formatCurrency = (value) => moneyFormatter.format(Number(value) || 0)
 
+const literacyLabel = (level) => {
+	const labels = {
+		1: "Beginner",
+		2: "Basic",
+		3: "Intermediate",
+		4: "Advanced",
+		5: "Expert"
+	}
+
+	return labels[Number(level)] || labels[3]
+}
+
+const riskLabel = (level) => {
+	const labels = {
+		1: "Very conservative",
+		2: "Cautious",
+		3: "Balanced",
+		4: "Growth-focused",
+		5: "Aggressive"
+	}
+
+	return labels[Number(level)] || labels[3]
+}
+
+const disciplineLabel = (level) => {
+	const labels = {
+		1: "Low",
+		2: "Developing",
+		3: "Moderate",
+		4: "Consistent",
+		5: "Highly disciplined"
+	}
+
+	return labels[Number(level)] || labels[3]
+}
+
 const buildChatPrompt = (question, context = {}) => {
 	const baseInstructions = [
 		"You are a friendly financial literacy assistant for a budgeting app.",
@@ -40,10 +76,19 @@ const buildDataDigest = (context = {}) => {
 	const categories = Array.isArray(context.spendingByCategory) ? context.spendingByCategory : []
 	const days = Array.isArray(context.spendingByDay) ? context.spendingByDay : []
 	const recentTransactions = Array.isArray(context.recentTransactions) ? context.recentTransactions : []
+	const questionnaire = context.questionnaire || null
 
 	const categoryDigest = categories.slice(0, 5).map((item) => `${item.category}: ${formatCurrency(item.total)}`).join("; ") || "No spending categories available."
 	const dayDigest = days.slice(0, 5).map((item) => `${item.date}: ${formatCurrency(item.total)}`).join("; ") || "No daily spending totals available."
 	const recentDigest = recentTransactions.slice(0, 5).map((item) => `${item.dateOp || "n/a"} · ${item.label || "Unnamed"} · ${item.category || "Uncategorized"} · ${formatCurrency(Math.abs(item.amount || 0))}`).join("\n") || "No recent transactions available."
+	const questionnaireDigest = questionnaire
+		? [
+			`Net monthly salary: ${questionnaire.netMonthlySalary ? formatCurrency(questionnaire.netMonthlySalary) : "not provided"}`,
+			`Financial literacy: ${questionnaire.financialLiteracy || 3}/5 (${literacyLabel(questionnaire.financialLiteracy)})`,
+			`Risk appetite: ${questionnaire.riskAppetite || 3}/5 (${riskLabel(questionnaire.riskAppetite)})`,
+			`Savings discipline: ${questionnaire.savingsDiscipline || 3}/5 (${disciplineLabel(questionnaire.savingsDiscipline)})`
+		].join("; ")
+		: "No questionnaire profile provided."
 
 	return [
 		`Uploaded data available: ${context.hasUploadedData ? "yes" : "no"}`,
@@ -52,6 +97,7 @@ const buildDataDigest = (context = {}) => {
 		`Total spending: ${formatCurrency(summary.totalSpending || 0)}`,
 		`Average daily spending: ${formatCurrency(summary.averageDailySpending || 0)}`,
 		`Biggest spending: ${summary.biggestSpending ? `${summary.biggestSpending.label} (${formatCurrency(summary.biggestSpending.amount)})` : "n/a"}`,
+		`User profile questionnaire: ${questionnaireDigest}`,
 		`Top categories: ${categoryDigest}`,
 		`Daily totals: ${dayDigest}`,
 		`Recent transactions:\n${recentDigest}`
