@@ -26,7 +26,7 @@
     "node-waf": "^10.1.1",
     "sequelize": "^6.37.8",
     "vue": "^3.5.30",
-    "vue-router": "^4.6.4"
+    "vue-router": "^5.0.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.5",

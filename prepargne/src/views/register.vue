@@ -6,6 +6,7 @@
 
       <form @submit.prevent="register">
 
+        
         <div class="input-group">
           <label>Username</label>
           <input v-model="username" type="text" required />
