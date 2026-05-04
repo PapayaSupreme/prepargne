@@ -113,6 +113,8 @@
     </section>
 
   </main>
+
+  <router-view />
 </template>
 
 <script setup>
